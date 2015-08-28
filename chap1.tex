@@ -1,0 +1,582 @@
+\newcommand {\vr}{\vec{r}}
+\newcommand {\vro}{\vec {r}_0}
+\newcommand {\vy}{\vec {y}}
+\newcommand {\vk}{\vec {k}}
+\newcommand {\vx}{\vec{x}}
+\newcommand {\vxo}{\vec {x}_0}
+\chapter{Solution to the Helmholtz Equation}
+\section{Introduction}
+The study of acoustics  requires one to solve  the  Helmholtz equation in three dimensions \cite{gumerov2005fast}.  Taking the Fourier transform of the wave equation  in time yields  the Helmholtz equation \cite{wiki:helmholtz}.
+ \begin{equation}
+\label{chap2/a}
+\bigtriangledown^2\Phi + \gamma^2\Phi = 0
+\end{equation}
+where $\Phi$ is the velocity potential, $\gamma = \omega /c$ , $\gamma$ is the wavenumber, $\omega$ is the angular frequency, $c$ is the speed of sound and  $\bigtriangledown^2$ is the Laplace operator.
+\iffalse 
+The Green's function $g(\vec{r},\vec{r}_0) $ is the solution to the inhomogeneous Helmholtz equation  when the input is a delta function  in space   \cite{morita1990integral,gumerov2005fast, hutchings1991prediction ,weisstein1999green,erdelyi1954tables}.
+ \begin{equation}
+\label{green1}
+\bigtriangledown^2g + \gamma^2g = -\delta(\vec{r}-\vec{r}_0)
+\end{equation}
+ In Eqn (\ref{green1}),  $\vec{r}$ and  $\vec{r_0}$ are the locations of the observation point and source point, respectively. The solution assuming $e^{-iwt}$ the time dependence is    
+\begin{equation}
+\label{greenPlot}
+g( \vr , \vr_0 )=\frac{ e^{{i\gamma}{|\vec{r}-\vec{r_0}|}}}{4\pi|\vec{r}-\vec{r_0}|}
+\end{equation}
+ by reciprocity property  of the Green's function 
+ \begin{equation}
+g( \vr , \vr{_0} ) = g( \vr{_0} , \vr )
+\end{equation}
+ \fi
+\section {Solution of the  Helmholtz Equation in Cartesian Coordinates  }
+
+In this section  we will outline the process used  to determine the solution 
+of the inhomogeneous Helmholtz equation
+%
+\begin{equation}
+\label{1}
+\bigtriangledown^2 g + \gamma^2 g= -\delta( \vr- \vr_0 )                     
+\end{equation}
+%
+where $g(\vr  , \vr _0)$  is the Green's function.
+The observer and source locations are  $\vr$ and $\vr_0$, respectively.
+The solution of Eqn (\ref{1})
+will be obtained implementing the three-dimensional spatial Fourier transform.
+The Fourier transform pair for the Green's function
+will be denoted as $g( {\vr , \vr _0} ) \leftrightarrow G({\vk , \vr_0} )$.
+The inverse Fourier transform is given by
+%
+\begin{equation}
+\label{int1}
+g({\vr ,\vr_0})= 
+\frac{1}{(2\pi)^3}\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} 
+G({\vk}, \vr_{0} ) 
+e^{i{\vk\cdot\vr }} 
+d\vk 
+\end{equation}
+whereas the forward Fourier transform is defined as
+\begin{equation}
+\label{int2}
+G(\vk,\vr_{0})= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} g({\vr}, \vr_0 ) e^{-i{\vk\cdot\vr }} d\vr 
+\end{equation}
+%
+where spatial wavenumber vector ${\vk} = ( k_x , k_y ,k_z ) $.
+
+Expressing each term in Eqn (\ref{1}) in terms of its inverse spatial Fourier transform yields
+\begin{equation}
+\label{int3}
+\delta({\vr -\vr_0})= \frac {1}{(2\pi)^3}\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} 
+e^{i{\vk\cdot({\vr - \vr_0}})}  d\vk              
+\end{equation}
+\begin{equation}
+\label{int4}
+\bigtriangledown^2 g=  ~-~\frac{1}{(2\pi)^3}\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} G({\vk},\vec{r_{0}})
+e^{i{\vk\cdot\vr}} d\vk
+\end{equation}
+Substituting Eqns (\ref{int1},\ref{int3},\ref{int4}) into Eqn (\ref{1}) yields
+%
+\begin{equation}
+\label{d1}
+\frac{1}{(2\pi)^3}\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} 
+\left [{ (\gamma^2 -k^2) G - e^{-i{\vk\cdot \vec{r_0}}} }\right ]
+e^{i{\vk\cdot\vr }} 
+{d\vk}
+ =0
+\end{equation}
+As we can see,  Eqn (\ref{d1}) is equal to zero for all choices for the
+source and observation points. In other words, the integral is invariant
+to changes to the spatial variables. The only way this can occur is if 
+the integrand itself is  equal to zero. Hence
+\begin{equation}
+ G= \frac{e^{-i{\vk \cdot \vec{ r_0}}}}{( k^2 -\gamma^2)} 
+\end{equation}
+where $k=|\vec{k}|$. The task at hand is to obtain $g$. This will done by taking the inverse Fourier
+transform of $G$. The application of complex variable analysis
+will aid us in this task. The Green's function is equal to
+%
+\begin{equation}
+\label{d2}
+ g=
+\frac{1}{(2\pi)^3}\int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty}
+ {
+\left[\int_{-\infty}^{+\infty} 
+\left( \frac{e^{ i { k_z (z - z_0)}}}{ k^2 -\gamma^2} \right )dk_z \right] e^{ i { k_x (x - x_0)}}e^{ i { k_y (y - y_0)}} 
+}
+dk_y dk_x             
+\end{equation}
+%
+The integral in the square brackets in Eqn (\ref{d2}) will be examined first.
+We will use term the integral $I_z$ for reference.
+\begin{equation}
+\label{he}
+ I_z=\frac{1}{(2\pi)^3}\int_{-\infty}^{+\infty} \frac{e^ { ik_z(z-z_0)}}{k_z^2+k_x^2+k_y^2 - \gamma^2} dk_z       
+\end{equation}
+The integrand has two poles on the imaginary axis in the complex $k_z$ plane namely 
+%
+\begin{equation}
+k_z=\pm i\sqrt{k_x^2 + k_y^2 - \gamma^2}
+\end{equation}
+%
+Recognizing that  the integrand of Eqn (\ref{he}) 
+decays as $1/|k_z|^2$ in the limit  as $|k_z|$ approaches infinity,
+the integral along the real line may be evaluated using a suitably 
+chosen contour integral.
+In Fig (\ref{contour}), the poles are plotted and the contour used for each spatial
+region of $z - z_0$ is shown.
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[height=3in]{./chap2.d/fig/CTfig1.eps}
+\caption{Contour integral}
+\label{contour}
+\end{center}
+\end {figure}
+
+
+To ensure convergence of the integral,  based on the  sign of $(z-z_0)$,
+one must close the contour in either the upper or lower half-plane.
+\begin{equation}
+I_z = \begin{cases}
+\frac{1}{8 \pi^2}\frac{e^{-\sqrt{k_x^2+k_y^2-\gamma^2}(z-z_0)}}{\sqrt {k_x^2+k_y^2-\gamma^2}}    &\mbox{if } z-z_0>0 \\ 
+\frac{1}{8 \pi^2}\frac{e^{\sqrt{k_x^2+k_y^2-\gamma^2}(z-z_0)}}{\sqrt {k_x^2+k_y^2-\gamma^2}}    &\mbox{if } z-z_0 <0 
+\end{cases}
+\end{equation}
+%
+Hence the $I_z$ given in Eqn(\ref{he}) is equal to
+\begin{equation}
+I_z = 
+\frac{1}{8 \pi^2}\frac{e^{-\sqrt{k_x^2+k_y^2-\gamma^2}\enskip |z-z_0|}}{\sqrt {k_x^2+k_y^2-\gamma^2}}
+\end{equation}
+%
+Now we will integrate Eqn (\ref{d2}) with respect to $ k_x $ and $k_y$ coordinates.
+Eqn (\ref{d2}) can be rewritten as follows,
+%
+\begin{equation}
+\label{he2}
+g=\frac{1}{8\pi^2}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\frac{e^{ik_xX}e^{ik_yY} e^{-\sqrt{k_x^2+k_y^2-\gamma^2}\enskip|z-z_0|}}{\sqrt{k_x^2+k_y^2-\gamma^2} }dk_x dk_y   
+\end{equation}
+where $ X = x-x_0 $ and $ Y= y-y_0  $.
+It is advantageous to use a cylindrical coordinate representation of the 
+two-dimensional wavenumber integration. 
+Converting Eqn (\ref{he2}) to a cylindrical coordinate system yields
+\begin{equation}
+  g=\frac{ 1}{8\pi^2}\int_{0}^{+\infty}\int_{0}^{+\infty}
+  \frac{e^{iK \rho {[\cos(\beta)\cos(\theta)+\sin(\beta)\sin(\theta)}]}  
+    e^{-\sqrt{K^2\cos^2(\beta)+K^2\sin^2(\beta) -\gamma^2}\enskip|z-z_0|}}{\sqrt{K^2\cos^2(\beta)+K^2\sin^2(\beta)-\gamma^2} }KdK d\beta 
+\end{equation}
+where 
+\begin{equation}
+\begin{split}
+{X} = & \rho\cos(\theta),~ {Y} = \rho \sin(\theta) \\
+k_x = &{K} \cos(\beta),~ k_x = {K} \cos(\beta),~ k_y = {K}\sin(\beta)\\
+ K = &\sqrt{k_x^2+k_y^2},~ \rho = \sqrt{X^2+ Y^2}
+\end{split}
+\end{equation}
+ 
+\begin{equation}
+g=\frac{1}{8\pi^2}\int_{0}^{+\infty}\int_{0}^{2\pi}\frac{e^{iK\rho{[\cos(\beta)\cos(\theta)+\sin(\beta)\sin(\theta)]}} e^{-\sqrt{K^2-\gamma^2}\enskip|z-z_0|}}{\sqrt{K^2-\gamma^2}}KdK d\beta
+\end{equation}
+\begin{equation}
+\label{he3}
+g=\frac{1}{8\pi^2}\int_{0}^{+\infty}
+\left [ \int_{0}^{2\pi}e^{i {K}\rho\cos(\beta-\theta)} d \beta \right ]
+\frac{e^{-\sqrt{ K^2 -\gamma^2}\enskip|z-z_0|}}{\sqrt{K^2 -\gamma^2}} 
+K dK
+\end{equation}
+The bracketed integral in Eqn (\ref{he3}) can be expressed in terms 
+of the zeroth order Bessel function of the first kind $J_0$.
+%
+\begin{equation}
+\label{he100}
+\int_{0}^{2\pi}e^{iK\rho\cos(\beta-\theta)}d\beta=2\pi J_0(K\rho)
+\end{equation}
+%
+Substituting  Eqn (\ref{he100}) into Eqn (\ref{he3}) yields
+the Hankel transform
+%
+\begin{equation}
+g=\frac{1}{4\pi}\int_{0}^{+\infty}   \frac{e^{-\sqrt{ K^2 -\gamma^2}\enskip|z-z_0|}}{\sqrt{K^2 -\gamma^2}} J_0(K\rho) \enskip K dK
+\end{equation}
+We will split the  integral into two parts such that
+\begin{equation}
+\label{final}
+g= \frac{1}{4\pi}\left[ g_1 +g_2 \right ]
+\end{equation}
+where the terms of the aforementioned equation are
+\begin{equation}
+g_1=\int_{0}^{\gamma}i~\frac{e^{i\sqrt{\gamma^2-K^2}\enskip|z-z_0|}}{\sqrt{\gamma^2-K^2}} J_0(K\rho)   KdK
+\end{equation}
+\begin{equation}
+ g_2=\int_{\gamma}^{\infty}\frac{e^{-\sqrt{K^2 -\gamma^2}\enskip|z-z_0|}}{\sqrt{K^2- \gamma^2} } J_0(K\rho)    KdK
+\end{equation}
+Using Euler's identity and the 
+change of variables $ a = K/\gamma \enskip $, $da=\frac{dK}{\gamma}$,
+$b= \gamma|z - z_0 |$  and $c= \gamma \rho$
+
+
+\begin{equation}
+g_1=\int_{0}^{1} \frac{i\gamma \cos{(b\sqrt{1-a^2})}}{\sqrt{1-a^2}} J_0(ac)a~ da \enskip -\int_{0}^{1} \frac{\gamma \sin{(b\sqrt{1-a^2})}}{\sqrt{1-a^2}} J_0(ac)a~ da
+\end{equation}
+
+\begin{equation}
+g_2=\int_{1}^{\infty}\frac{\gamma e^{-b\sqrt{a^2-1}}}{\sqrt{a^2-1}} J_0(ac)a~ da 
+\end{equation}
+We will evaluate the imaginary part and real part of $g_1 +g_2$ separately.
+The imaginary part of the sum is evaluated in \cite[p.~40(48)]{erdelyi1954tables} and simplified using
+auxiliary properties given in \cite{abramowitz1972handbook}.
+The result may be written as
+%
+\begin{equation}
+\label{he4}
+Im(g_1 +g_2 )=
+\int_{0}^{1}\frac{\gamma \cos{(b\sqrt{1-a^2})}}{\sqrt{1-a^2}} J_0(ac)a ~da = \frac{ \gamma sin ( \sqrt{b^2+c^2} )}{ \sqrt{b^2 + c^2}}
+\end{equation}
+%
+The real part of $g_1+g_2$ can be evaluated using \cite [p.~35(23)]{erdelyi1954tables} and simplified
+using the spherical Bessel function relations given in \cite[p.~438(10.1.11),p.~438(10.1.12)]{abramowitz1972handbook}.
+The result is equal to 
+%
+\begin{equation}
+\label{he5}
+\begin{split}
+Re(g_1 +g_2)& = -\int_{0}^{1}\frac{\gamma \sin{(b\sqrt{1-a^2})}}{\sqrt{1-a^2}} J_0(ac)a ~da 
++\int_{1}^{\infty}\frac{\gamma e^{-b\sqrt{a^2-1}}}{\sqrt{a^2-1}} J_0(ac)a~ da \\
+& = \frac{ \gamma cos ( \sqrt{b^2+c^2} )}{ \sqrt{b^2 + c^2}}
+\end{split}
+\end{equation}
+%
+Finally the Green's function can be evaluated by adding
+the real and imaginary parts of the Green's function and dividing by ${4\pi}$.
+%
+\begin{equation}
+\label{chap1Green}
+g =   \frac{ \gamma e^{i \sqrt{b^2+c^2}}}{ 4 \pi \sqrt{b^2 + c^2}} =  \frac{  e^{i \gamma R}}{ 4 \pi R}
+\end{equation}
+%
+where $R=|\vec{r}-\vec{r_0}|$ is the distance between source and observation positions.
+%============================================================================
+\newpage
+\section{Green's Function for the Helmholtz Equation in terms of Spherical Harmonics }
+
+
+The Helmholtz equation in  spherical coordinates \cite{balanis1989advanced,weisstein2005delta,wiki:delta} is
+\begin{equation}
+\label{sec2.3/1}
+\begin{split}
+  \frac{1}{r^2}\frac{\partial}{\partial{r}}(r^2~\frac{\partial{g}}{\partial{r}})+\frac{1}{r^2~sin(\theta)}\frac{\partial}{\partial{\theta}}(sin(\theta)\frac{\partial{g}}{\partial{\theta}})+\frac{1}{r^2~sin^2(\theta)}\frac{\partial^2{g}}{\partial^2{\phi}}+\gamma^2g \\
+=- \frac{\delta (r-r_o)}{r^2} \delta (\phi-\phi_o)\delta(\theta-\theta_o)
+\end{split}
+\end{equation}
+In the above equation, $(r,\theta,\phi)$ and $(r_0,\theta_0,\phi_0)$  are the spherical coordinates of the observation point and the source point, respectively. The range of variables  are $( 0 \le \phi \le 2\pi)$,  $ (0 \le \theta \le \pi)$ and $r \ge 0$. 
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=1.0]{./chap2.d/fig/sphereDec7New.eps}
+\caption{Spherical coordinate system}
+\label{sphericalCoSy}
+\end{center}
+\end {figure}
+\par
+ In order to find the expression for  the Green's function,  we need to derive the  solution to the inhomogeneous Helmholtz equation. The inhomogeneous solution can be obtained using the separation of variables method, where
+\begin{equation}
+\label{sec2.3/2}
+ g(r,\theta,\phi) = R(r) {\Theta}(\theta){\Phi}(\phi).
+\end{equation}
+ $R(r)$ is a  solution with variable $r$, $\Theta(\theta)$ is a solution with variable $\theta$ and  $\Phi(\phi)$ is a solution with variable $\phi$.
+Appendix $1$  shows derivation of the solution by representing $g$ as,
+\begin{equation}
+\label{sec2.3/3}
+g = \sum_{n=0}^{\infty} \sum_{m=-n}^{n}
+a_{nm} R_n(r) Y_{nm}(\theta, \phi)
+\end{equation}
+where  $a_{nm}$ are  the coefficients of the expansion. The function  $Y_{nm}(\theta,\phi)$ is the spherical harmonic  given by  
+ $Y_{nm}(\theta, \phi ) = P_{nm}(\cos( \theta)) e^{im\phi}/\sqrt{2\pi}$,
+where  $P_{nm}$ is the  normalized 
+associated Legendre polynomial of order  $n$ and degree $m$. Our aim is to find the unknown coefficient $a_{nm}$ and the expression for $R_n(r)$ which is a function of radial distance $r$.
+Substituting Eqn(\ref{sec2.3/2}) in place of $g$ in Eqn (\ref{sec2.3/1}) yields.
+\begin{equation}
+\label{sec2.3/5}
+\sum_{n=0}^{\infty} \sum_{m=-n}^{n} a_{nm}
+\frac{1}{r^2} \left [ ( r^2 R_n')' + (\gamma^2 r^2 - n(n+1))R_n \right ] Y_{nm}
+= \frac{\delta (r-r_o)}{r^2} \delta (\phi-\phi_o)\delta(\theta-\theta_o) 
+\end{equation}
+where $()'$ denote differentiation with respect to the argument.
+In order to determine  $a_{nm}$, we  multiply both sides of the equation by $ sin(\theta) d\theta d\phi Y_{qj}^*$ where $Y^{*}_{qj}$ is complex conjugate of $Y_{qj}$. Integrating the result 
+over $\phi:(0,2\pi)$ and $\theta:(0,\pi)$ yields by virtue of orthogonality
+of $Y_{nm}$
+\begin{equation}
+\label{sec2.3/7}
+\int_{0}^{2\pi}\int_{0}^{\pi}Y_{nm}(\theta,\phi)Y_{qj}^{*}(\theta,\phi)sin(\theta)d\theta d\phi = \begin{cases}1,&\text{if \textit{n=m, q=j}}\\
+0 ,& \text {otherwise}
+\end{cases}
+\end{equation}
+In the above equation, substituting $\zeta= cos(\theta)$ and $d\zeta= -sin(\theta)d\theta$ yields 
+\begin{equation}
+\int_{0}^{2\pi}\int_{-1}^{1}Y_{nm}(\zeta,\phi)Y_{qj}^{*}(\zeta,\phi)d\zeta d\phi = \begin{cases}1,&\text{if \textit{n=m, q=j}}\\
+0 ,& \text {otherwise}
+\end{cases} 
+\end{equation}
+ Therefore Eqn(\ref{sec2.3/5}) becomes
+ \begin{equation}
+a_{nm} \left [ R_n'' + 2 R_n'/r + (\gamma^2 - n(n+1)/r^2 )R_n \right ] 
+= - \frac{\delta (r-r_o)}{r^2} Y_{nm}^*(\zeta_o,\phi_o )
+\end{equation}
+In the above equation, equating the radial terms yields coefficient $a_{nm}$ equal to the complex conjugate of the spherical harmonic $Y_{nm}^{*}$ as follows:
+\begin{equation}
+a_{nm} = Y_{nm}^*(\zeta_o,\phi_o )
+\end{equation}
+
+Derivation of the expansion coefficients for the radial solutions to the Helmholtz equation is  as follows. Isolating the radial terms in Eqn (\ref{sec2.3/5}) yields the following  Bessel differential equation. 
+\begin{equation}
+\label{sec2.3/9}
+\left [ R_n'' + 2 R_n'/r + (\gamma^2 - n(n+1)/r^2 )R_n \right ] 
+= - \frac{\delta (r-r_o)}{r^2}
+\end{equation}
+Solutions to the Bessel equation are the spherical Bessel functions of first kind $j_n(\gamma r)$ and second kind $y_n(\gamma r)$ \cite{weisstein2006bessel}.
+ There are two  solutions of Eqn  (\ref{sec2.3/9}), i.e. $R_n(r)$ depending on the distance  of $r$ with relative to $r_0$.  
+\\ \enskip    For \enskip  $r < r_0$
+\begin{equation}
+\label{sec2.3/10}
+\,{R_{n}(r)} = B\,j_n{(\gamma r) }
+\end{equation}
+ for \enskip $ r > r_0$
+\begin{equation}
+\label{sec2.3/11}
+  \,{R_{n}(r)}   = A\,h_n^{(1)}{(\gamma r)} 
+\end{equation}
+where $A$ and  $B$ are constants. Also  $h_n^{(1)}(\gamma r)$ is the spherical Hankel function of the first kind \cite{weisstein2006bessel,wiki:hankel} and given by $ h_{n}^{(1)}(\gamma r) = j_{n}(\gamma r) + i y_n(\gamma r)$.
+ Considering Eqns (\ref{sec2.3/10} and \ref{sec2.3/11} ), the condition for the continuity of the radial solution can be written as 
+\begin{equation}
+\label{sec2.3/13}
+A\,h_n^{(1)}{(\gamma r_{0})}-B\,j_n{(\gamma r_{0})}=0 
+\end{equation}
+ At $r = r_0$, $R'_n$ is discontinuous, so at this point we will use a jump condition which can be derived as follows.
+Integrating Eqn (\ref{sec2.3/9}) over  $r = (r_0-\epsilon,r_0 +\epsilon)$
+and using the impulse-matching technique yields
+\begin{equation}
+\lim_{\epsilon \to 0} {R_{n}'(r)}{\bigg|_{(r_{0}-\epsilon)}^{(r_{0}+\epsilon)}} = \frac{-1}{r_{0}^2}  
+\end{equation}
+Hence the radial solution $R'_n(r)$ satisfies
+\begin{equation}
+\label{sec2.3/15}
+A\,\gamma h_{n}'^{(1)}(\gamma r_0)-B\,\gamma j_{n}'(\gamma r_0) =  \frac{-1}{r_{0}^2}  
+\end{equation}
+From Eqns (\ref{sec2.3/13} and \ref{sec2.3/15}) we have two equations which  can be written in matrix form as 
+
+%--------------------------------------------
+\begin{equation}
+  \begin{bmatrix} -h_n^{(1)}(\gamma r_0) & j_n(\gamma r_0) \\ -h_n'^{(1)}(\gamma r_0) & j_n'(\gamma r_0)  \end{bmatrix} \left[\begin{array}{c}A \\ B \end{array}\right]= \left[\begin{array}{c}0 \\ \frac{1}{\gamma r_{0}^{2}} \end{array}\right]
+\end{equation}
+\begin{equation}
+\label{sec2.3/17}
+A = \frac{-j_{n}(\gamma r_0)}{-h_{n}^{(1)}(\gamma r_{0})j_{l}'(\gamma r_0) + h_{n}'^{(1)}(\gamma r_{0})j_{n}(\gamma r_{0})}\enskip \frac{1}{\gamma r_{0}^2 }
+\end{equation}
+\begin{equation}
+\label{sec2.3/19}
+B = \frac{-h_{n}^{(1)}(\gamma r_{0})}{-h_{l}^{(1)}(\gamma r_{0})j_{n}'(\gamma r_{0}) + h_{n}'^{(1)}(\gamma r_{0})j_{n}(\gamma r_{0})}\enskip \frac{1}{\gamma r_{0}^2 }
+\end{equation}
+Where $()'$ denote differentiation with respect to the argument. The above matrix can be simplified using the  Wronskian determinant \cite{wiki:xxx}, yielding
+\begin{equation}
+-h_{n}^{(1)}(\gamma r_0)j_{n}'(\gamma r_0) + h_{n}'^{(1)}(\gamma r_0)j_{n}(\gamma r_0) = \frac{-i}{\gamma^2r_{0}^2 }
+\end{equation}
+Substituting the above determinant in  Eqns  (\ref{sec2.3/17} and \ref{sec2.3/19}) gives
+\begin{equation}
+A = j_{n}{(\gamma r_{0})} (+i\gamma)
+\end{equation}
+\begin{equation}
+B =h_{n}^{(1)}(\gamma r_{0}) (+i\gamma)
+\end{equation}
+Substituting the  solution for $A$ and $B$ into Eqns (\ref{sec2.3/10} and \ref {sec2.3/11})  the  radial solution is obtained.
+\\ For $r >r_0$
+\begin{equation}
+\label{sec2.3/20}
+R_{n}(r) = (+i\gamma)j_{n}{(\gamma r_0)}h_{n}^{(1)}(\gamma r)
+\end{equation} 
+and  for $r <r_0$
+\begin{equation}
+\label{sec2.3/22}
+R_{n}(r) = (+i\gamma)h_{n}^{(1)}{(\gamma r_0)}j_{n}(\gamma r)
+\end{equation} 
+Combining  the  solutions of the Helmholtz equation in Eqn (\ref{sec2.3/3}) with Eqns (\ref{sec2.3/20} and \ref{sec2.3/22}) yields the  following expression for the spherical Green's function. 
+\begin{equation}
+\label{HelloHello1}
+g= \begin{cases}i\gamma \sum_{n=0}^{\infty}\sum_{m=-n}^{n}j_{n}(\gamma r_{0})h_{n}^{(1)}(\gamma r){Y_{nm}(\zeta,\phi)Y^{*}_{nm}(\zeta_{0},\phi_{0})}&\mbox{if } {r}>{r}_0\\
+i\gamma \sum_{n=0}^{\infty}\sum_{m=-n}^{n}j_{n}(\gamma r)h_{n}^{(1)}(\gamma r_0){Y_{nm}(\zeta,\phi)Y^{*}_{nm}(\zeta_{0},\phi_{0})}&\mbox{if } {r}_0>{r}
+\end{cases}
+\end{equation} 
+Eqn (\ref{HelloHello1}) can be rewritten  using following expressions.
+\begin{equation}
+R^{m}_{n}(\vec{r})= j_{n}{(\gamma r)} Y_{nm}(\zeta,\phi)
+\end{equation}
+\begin{equation}
+S^{m}_{n}(\vec{r})= h_{n}^{(1)}{(\gamma r)} Y_{nm}(\zeta,\phi)
+\end{equation}
+Noting the $Y^{*}_{nm} =Y_{n,-m}$, the spherical Green's function is given by
+\begin{equation}
+\label{sphericalGreen1}
+g= \begin{cases}i\gamma \sum_{n=0}^{\infty}\sum_{m=-n}^{n}S_{n}^{m}(\vec{r})R_{n}^{-m}(\vec {r}_0)&\mbox{if } |\vec{r}|>|\vec{r}_0|\\
+i\gamma \sum_{n=0}^{\infty}\sum_{m=-n}^{n}S_{n}^{-m}(\vec{r}_0)R_{n}^{m}(\vec{r})&\mbox{if } |\vec{r}|<|\vec{r}_0|
+\end{cases}
+\end{equation} 
+\par For the  numerical computation the series is   truncated. Therefore Eqn (\ref{sphericalGreen1}) can be rewritten as 
+\begin{equation}
+\label{sphericalGreenTrunc}
+g= \begin{cases}i\gamma \sum_{n=0}^{T}\sum_{m=-n}^{n}S_{n}^{m}( \vec{r})R_{n}^{-m}(\vec{r}_0)&\mbox{if } |\vec{r}|>|\vec{r}_0|\\
+i\gamma \sum_{n=0}^{T}\sum_{m=-n}^{n}S_{n}^{-m}( \vec{r}_0)R_{n}^{m}( \vec{r})&\mbox{if } |\vec{r}|<|\vec{r}_0|
+\end{cases}
+\end{equation}   
+Where  $\vec{r}$ and $\vec{r}_0$ are the position vectors of the observation and source points respectively, where $T$ is the truncation order.  Also, $n$ is the order and $m $ is the degree. 
+\par 
+ $S$ is the singular basis  function and $R$ is the regular basis function which represents solution to the Helmholtz equation. Regular solution $R^{m}_{n}(\vec{r})$  is regular everywhere and singular solution $ S_{n}^{m}( \vec{r})$ is singular when $r=0$ due to the Hankel function.  Singular and regular solutions   separate the domain of solutions as  shown in  Figs (\ref{rrss1} and \ref{rrss2}). For the sphere of radius $a$, $ R$ is the regular solution inside the sphere   and $S$ is the singular solution outside the sphere. The spherical Green's function formula for the case when $ |\vec{r}|>|\vec{r}_0|$ is referred as far field or multipole  expansion  as shown in Fig (\ref{rrss1}). For  the case when $ |\vec{r}|<|\vec{r}_0|$  is referred as  near field  or local expansion as shown in  Fig (\ref{rrss2}). 
+%\begin{figure}
+%\begin{center}
+%  \includegraphics[scale=0.6]{./chap2.d/RSnew.ps}
+%\caption{ regular and singular solutions for $\vec{r}$>$\vec{r}_0$}
+%\label{rrss1}
+%\end{center}
+%\end{figure}
+
+%\begin{figure}
+%\begin{center}
+%  \includegraphics[scale=0.6]{./chap2.d/RS1new.ps}
+%\caption{ regular and singular solutions  for $\vec{r}<\vec{r}_0$}
+%\label{rrss2}
+%\end{center}
+%\end{figure}
+
+\begin{figure}
+\begin{center}
+  \includegraphics[scale=0.5]{./chap2.d/fig/sourcesInSphereSing1.eps}
+\caption{ Regular and singular solutions for $|\vec{r}|>|\vec{r}_0|$}
+\label{rrss1}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+  \includegraphics[scale=0.5]{./chap2.d/fig/sourcesInSphereReg1.eps}
+\caption{ Regular and singular solutions  for $|\vec{r}|<|\vec{r}_0|$}
+\label{rrss2}
+\end{center}
+\end{figure}
+\newpage
+\section{Approximation Error }
+In this section, we will examine the error due to the  approximation of the free space Green's function in spherical coordinates. Using  Eqns (\ref{chap1Green} and \ref{sphericalGreenTrunc}) the approximation  for the free space Green's function in spherical coordinates  is given as
+\begin{equation}
+\label{sphericalGreenTrunc1}
+g(\vec{r},\vec{r}_0)= \frac{e^{ik|\vec{r}-\vec{r}_0|}}{4\pi |\vec{r}-\vec{r}_0|}\simeq \begin{cases}i\gamma \sum_{n=0}^{T}\sum_{m=-n}^{n}S_{n}^{m}( \vec{r})R_{n}^{-m}(\vec{r}_0)&\mbox{if } |\vec{r}|>|\vec{r}_0|\\
+i\gamma \sum_{n=0}^{T}\sum_{m=-n}^{n}S_{n}^{-m}( \vec{r}_0)R_{n}^{m}( \vec{r})&\mbox{if } |\vec{r}|<|\vec{r}_0|
+\end{cases}
+\end{equation}
+where $\vec{r}$ and $\vec{r_0}$ are the locations for the observation point and source point respectively.  The approximation of the free space Green's function in spherical coordinates is the series  of the  regular and singular functions. This series is truncated for numerical computation. In  Eqn (\ref{sphericalGreenTrunc1}), the series is truncated at  $T$ which is referred to as the  truncation number. From the series we can see that the  truncation number is directly proportional to the convergence of the series. Therefore, if the truncation number is large, the series converges and the error between the free space Green's function and spherical Green's function decreases. By using  Eqn (\ref{sphericalGreenTrunc1}),   the approximation  error analysis of   the Green's function with respect  to the truncation number is considered. 
+
+\par
+Use of  Eqn (\ref{sphericalGreenTrunc1}) for the approximation error analysis results in a singularity due to the  $|\vec{r}-\vec{r}_0|$ term  in the denominator of the expression for the free space Green's function. To examine the error irrespective of the singularity, a different expression is considered for the free space and spherical Green's function where  the$ |\vec{r}-\vec{r}_0|$ term does not give rise to a singularity. The aforementioned expression is given as 
+\begin{equation}
+\label{removedSingfree}
+g_f(\vec{r},\vec{r}_0)=|\vec{r}-\vec{r}_0|~g(\vec{r},\vec{r}_0)= \frac{e^{ik|\vec{r}-\vec{r}_0|}}{4\pi}
+\end{equation}
+\begin{equation}
+\label{removedSingSph}
+g_{s}(\vec{r},\vec{r}_0)\simeq \begin{cases} i\gamma~|\vec{r}-\vec{r}_0| \sum_{n=0}^{T}\sum_{m=-n}^{n}S_{n}^{m}( \vec{r})R_{n}^{-m}(\vec{r}_0)\enskip \enskip {if }\enskip |\vec{r}|>|\vec{r}_0| \\
+i\gamma~|\vec{r}-\vec{r}_0| \sum_{n=0}^{T}\sum_{m=-n}^{n}S_{n}^{-m}( \vec{r}_0)R_{n}^{m}(\vec{r})\enskip \enskip {if }\enskip |\vec{r}|<|\vec{r}_0|
+\end{cases}
+\end{equation}   
+where $g_f(\vec{r},\vec{r}_0)$ and  $g_{s}(\vec{r},\vec{r}_0)$ represents free space and spherical Green's function respectively. In Eqn (\ref{removedSingfree}), $|\vec{r}-\vec{r}_0|$ is removed from the denominator therefore  the absolute value of the free space Green's function  $g_{f}(\vec{r},\vec{r}_0)$ is  constant with a value of  $\frac{1}{4\pi}$. In order to approximate the free space Green's function in spherical coordinates,  the expression for the spherical Green's function $g(\vec{r},\vec{r}_0)$ is multiplied with $|\vec{r}-\vec{r}_0|$ in Eqn (\ref{removedSingSph}). The relative error between the free and spherical Green's function is calculated using $\frac{g_{f}-g_{s}}{g_f}$.  As spherical Green's function is a series, it does not converge for all points  located at  a distance equal to the radius $\vec{r}_0$.  Therefore, in  Figs (\ref{errorGreenL16} and   \ref{errorGreenL32}) we see that for the locations equal to $\vec{r}_0$,  the series does not converge  and error is maximum. 
+\par 
+For the analysis of the approximation error the following experiment is performed.  A  $2$D  grid is considered  ranging from $-20$ to $20$ for the x-axis and y-axis. The total number of points is $80$. Relative error is plotted on the $z$ axis.  All the grid points are observation points except the source point which is located at $\vec{r}_0=(10.1,0,0)$. 
+
+\par 
+The relative  error is calculated using Eqns (\ref{removedSingfree} and \ref{removedSingSph}). Figs (\ref{errorGreenL16} and   \ref{errorGreenL32}) are the relative error plots for the truncation number $T =16$ and $T =32$ respectively.    The results are plotted in  Figs (\ref{errorGreenL16} and  \ref{errorGreenL32})  with different truncation number in order to  clearly understand the decrease in the approximation error  with the increase in truncation number. 
+\par
+Fig (\ref{errorGreenL16}) shows that the maximum error occurs at the circle of radius equal to $\vec{r}_0=(10.1,0,0)$ as the function does not converge at the circle. The error is minimum elsewhere. Also the maximum relative error is $1.2$.
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=1.0]{./chap2.d/fig/greenErrorL16.eps}
+\caption{Approximation error for $T = 16$}
+\label{errorGreenL16}
+\end{center}
+\end {figure}
+\newpage
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=1.0]{./chap2.d/fig/greenErrorL32.eps}
+\caption{Approximation error for $T = 32$}
+\label{errorGreenL32}
+\end{center}
+\end {figure}
+
+Fig( \ref{errorGreenL32}) shows that increasing the truncation number decreases  the maximum relative error from $1.2$ to $0.8$. Therefore the spherical Green's function is a good approximation for the free space Green's function. 
+%-------------------------------------------------
+
+\newpage
+\section{Kirchhoff Integral Formula}
+\label{KIF}
+In this section the integral form of the solution of the inhomogeneous  Helmholtz equation is derived \cite{spivack2012may}\cite{pierce1981acoustics}. 
+The Kirchhoff integral formula expresses the potential $p$ in a closed 
+volume $V$ as the sum of contributions arising 
+from the sources on the surface  $A$ of the volume  $V$
+and those enclosed in the volume.
+The Kirchhoff integral formula \cite{pierce1981acoustics} in the frequency
+domain is 
+\begin{equation}
+\label{sec2.6/1}
+ p(\vec{r}_0,k ) =  \oint_{A}\left[g(\bigtriangledown p)\cdot \vec{n} -  p(\bigtriangledown g) \cdot \vec{n}    \right]~dA + \int_{V}gs ~dV
+\end{equation}
+where $g$ is the  Green's function, $k = \omega /c$, $\vec{n}$ is the inward directed normal vector and $s$ is the source.
+The variable $A$ represents the area of the surface of the volume $V$.
+The Kirchhoff integral formula can be derived as follows.
+Consider the inhomogeneous Helmholtz equation in the volume $V$. 
+\begin{equation}
+\label{sec2.6/3}
+\bigtriangledown^2p+\gamma^2p = s (\vec{r}, \omega )
+\end{equation}
+where  $p$ is the potential, $s $ is the amplitude of the source and $\gamma$ is the wavenumber. 
+The Green's function satisfies
+\begin{equation}
+\label{sec2.6/5}
+\bigtriangledown^2g+\gamma^2g = - \delta{(\vec{r}-\vec{r}_0)}
+\end{equation}
+where $\vec{r}$ and $\vec{r}_0$ are the locations of the observation point and source point, respectively. 
+Multiplying Eqn (\ref{sec2.6/3}) with $g$ and Eqn (\ref{sec2.6/5}) with $p$ and then subtracting 
+the result yields
+\begin{equation}
+\label{sec2.6/7}
+  g\bigtriangledown^2p - p\bigtriangledown^2g - g\ s  = p\ \delta{(\vec{r}-\vec{r}_0)}
+\end{equation}
+Integrating Eqn. (\ref{sec2.6/7}) over the volume $V$ yields
+\begin{equation}
+\label{sec2.6/9}
+-\int_{V} ({g\bigtriangledown^2p + p\bigtriangledown^2g})~dV 
+-\int_{V} gs ~ dV = \int_{V} p ~\delta{(\vec{r}-\vec{r}_0)}~ dV
+\end{equation}
+Using the sifting property of the delta function \cite{morse1986theoretical}, Eqn (\ref{sec2.6/9}) can be rewritten as 
+\begin{equation}
+\label{sec2.6/11}
+-\int_{V} ({g\bigtriangledown^2p - p\bigtriangledown^2g})~dV +\int_{V}gs ~ dV
+= \begin{cases}
+p(\vec{r}_0)\text{ if $\vec{r}_0$ is in $V$ }\\
+0 \text{ otherwise}
+\end{cases}
+\end{equation}
+The first term on the left hand side of Eqn (\ref{sec2.6/11}), which is a volume integral, can be converted into a  surface integral using Green's theorem.  Green's theorem gives the  relationship between the closed surface integral and the volume integral of the total volume enclosed by the surface.
+ \begin{equation}
+\label{sec2.6/13}
+\int_{V} ({g\bigtriangledown^2p - p\bigtriangledown^2g}) ~dV =\oint_{A}\left[g(\bigtriangledown p)\cdot \vec{n} -  p(\bigtriangledown g) \cdot \vec{n}    \right]~dA 
+\end{equation}
+Substituting the above relationship into Eqn (\ref{sec2.6/11}) yields
+\begin{equation}
+\label{kif1}
+ p(\vec{r}_0) =  \oint_{A}\left[g(\bigtriangledown p)\cdot \vec{n} -  p(\bigtriangledown g) \cdot \vec{n}    \right]~dA- \int_{V}gs ~ dV
+\end{equation}
+Eqn (\ref{kif1}) is the Kirchhoff's integral formula which gives the unknown potential  at the observation point.
+If conservation of linear momentum is applied 
+$ g(\bigtriangledown p)\cdot \vec{n}$ is equal to
+$ i \omega \rho  g \vec{u}\cdot \vec{n}$.
+\par In the thesis we will focus on the evaluation of $ p(\vec{r}_0)= \int_{V}gs  ~dV$.
+In our  case the integral takes the form $ p(\vec{r})= \int_{V}g(\vec{r},\vec{r}_0)s(\vec{r}_0) ~ dV$, where $ p(\vec{r})$ is the potential at the observation point. For the numerical computation the integral is transformed  to a discrete summation form   which is explained in the Chapter$3$.  Fast multipole method is used to calculate the discrete summation form of the potential as explained in the Chapter$3$.
+\newpage
+
+
+
+
