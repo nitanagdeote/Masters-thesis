@@ -1,2 +1,2 @@
 # files
-Master thesis document.
+Master's thesis document.
