@@ -20,3 +20,8 @@ wavelength.
 ![image](https://github.com/user-attachments/assets/e1f410aa-5f79-48b9-82d5-1bd57cf7182b)
 
 This plot shows relative error in simulation of the Wave Equation using spherical Green’s function.
+
+![image](https://github.com/user-attachments/assets/91c61d2e-a017-4c3d-b762-49c7eee83b91)
+
+This contour plot shows error analysis for the potential, comparing the direct calculation with the simulation. Results show that
+potential calculated with the expansion coefficients is a good approximation.
