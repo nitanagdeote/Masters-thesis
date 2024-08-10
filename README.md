@@ -14,3 +14,9 @@ Error analyzes are undertaken for single and
 multipole cases. It is shown that translation errors
  can be problematic if the distance between subdomain centers is less than a
 wavelength.
+
+## Notable Figures
+
+![image](https://github.com/user-attachments/assets/e1f410aa-5f79-48b9-82d5-1bd57cf7182b)
+
+This plot shows relative error in simulation of the Wave Equation using spherical Green’s function.
