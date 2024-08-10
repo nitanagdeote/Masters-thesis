@@ -25,3 +25,7 @@ This plot shows relative error in simulation of the Wave Equation using spherica
 
 This contour plot shows error analysis for the potential, comparing the direct calculation with the simulation. Results show that
 potential calculated with the expansion coefficients is a good approximation.
+
+![image](https://github.com/user-attachments/assets/0ed5ec75-f048-4e5e-aace-d5a5b81e042e)
+
+A conceptial overview diagram created using [XFig](https://en.wikipedia.org/wiki/Xfig).
